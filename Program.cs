@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace FtpClient
 {
@@ -15,7 +17,10 @@ namespace FtpClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FtpClient());
+            Application.Run(new Login_Form());
+            Application.Run(new main_app());
+
         }
+
     }
 }
