@@ -53,7 +53,6 @@
             this.create_directories = new System.Windows.Forms.Button();
             this.back = new System.Windows.Forms.Button();
             this.logo = new System.Windows.Forms.PictureBox();
-            this.progressbar = new FtpClient.MyProgressBar();
             this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -207,16 +206,6 @@
             this.logo.TabIndex = 2;
             this.logo.TabStop = false;
             // 
-            // progressbar
-            // 
-            this.progressbar.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.progressbar.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.progressbar.Location = new System.Drawing.Point(98, 470);
-            this.progressbar.Name = "progressbar";
-            this.progressbar.Size = new System.Drawing.Size(244, 17);
-            this.progressbar.TabIndex = 0;
-            this.progressbar.Value = 80;
-            // 
             // materialListView1
             // 
             this.materialListView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
@@ -229,6 +218,7 @@
             this.columnHeader4});
             this.materialListView1.Depth = 0;
             this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.materialListView1.FullRowSelect = true;
             this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListView1.HideSelection = false;
             this.materialListView1.HoverSelection = true;
@@ -284,12 +274,12 @@
             // 
             this.percentage.AutoSize = true;
             this.percentage.Depth = 0;
-            this.percentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.percentage.Font = new System.Drawing.Font("Roboto", 11F);
             this.percentage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.percentage.Location = new System.Drawing.Point(589, 469);
             this.percentage.MouseState = MaterialSkin.MouseState.HOVER;
             this.percentage.Name = "percentage";
-            this.percentage.Size = new System.Drawing.Size(90, 18);
+            this.percentage.Size = new System.Drawing.Size(91, 19);
             this.percentage.TabIndex = 6;
             this.percentage.Text = "a MB / b MB";
             // 
@@ -301,7 +291,6 @@
             this.Controls.Add(this.percentage);
             this.Controls.Add(this.speed);
             this.Controls.Add(this.materialListView1);
-            this.Controls.Add(this.progressbar);
             this.Controls.Add(this.logo);
             this.Controls.Add(this.path);
             this.Controls.Add(this.home);
@@ -343,7 +332,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private MyProgressBar progressbar;
         private MaterialSkin.Controls.MaterialLabel speed;
         private MaterialSkin.Controls.MaterialLabel percentage;
     }
