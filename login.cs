@@ -12,10 +12,10 @@ using MaterialSkin.Controls;
 
 namespace FtpClient
 {
-    public partial class Login_Form : MaterialForm
+    public partial class f_login : MaterialForm
     {
         private FTPHelper ftpHelper;
-        public Login_Form()
+        public f_login()
         {
             InitializeComponent();
 
@@ -33,24 +33,24 @@ namespace FtpClient
             {
                 if (checktext())
                 {
-                    string Address = address.Text.Trim();
-                    string Port = port.Text.Trim();
-                    string UserName = username.Text.Trim();
-                    string Password = password.Text.Trim();
+                    string Address = tb_address.Text.Trim();
+                    string Port = tb_port.Text.Trim();
+                    string UserName = tb_username.Text.Trim();
+                    string Password = tb_password.Text.Trim();
                    //ftpHelper = new FTPHelper(Address, Port, UserName, Password);
                 }
             }
             catch (Exception ex)
             {
             }
-            Application.Run(new main_app());//点击log in后弹出主界面
+            Application.Run(new f_main_app());//点击log in后弹出主界面
         }
         private bool checktext()//判断有没有输入地址、端口、用户名、密码
         {
-            string Address = address.Text.Trim();
-            string Port =  port.Text.Trim();
-            string UserName = username.Text.Trim();
-            string Password = password.Text.Trim();
+            string Address = tb_address.Text.Trim();
+            string Port =  tb_port.Text.Trim();
+            string UserName = tb_username.Text.Trim();
+            string Password = tb_password.Text.Trim();
             if (string.IsNullOrEmpty(Address) || string.IsNullOrEmpty(Port) || string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
             {
                 MessageBox.Show("请输入登录信息");

@@ -1,6 +1,6 @@
 ﻿namespace FtpClient
 {
-    partial class main_app
+    partial class f_main_app
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "1",
-            "abc.txt"}, -1);
+            "",
+            "abc.txt",
+            "文件夹",
+            "1kb"}, 1);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "2",
             "ef.doc",
@@ -42,156 +44,156 @@
             "hahaha.xls",
             "xls"}, -1);
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("4");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main_app));
-            this.path = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.home = new System.Windows.Forms.Button();
-            this.refresh = new System.Windows.Forms.Button();
-            this.forward = new System.Windows.Forms.Button();
-            this.delete = new System.Windows.Forms.Button();
-            this.download = new System.Windows.Forms.Button();
-            this.upload = new System.Windows.Forms.Button();
-            this.create_directories = new System.Windows.Forms.Button();
-            this.back = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(f_main_app));
+            this.tb_path = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.bt_home = new System.Windows.Forms.Button();
+            this.bt_refresh = new System.Windows.Forms.Button();
+            this.bt_forward = new System.Windows.Forms.Button();
+            this.bt_delete = new System.Windows.Forms.Button();
+            this.bt_download = new System.Windows.Forms.Button();
+            this.bt_upload = new System.Windows.Forms.Button();
+            this.bt_create_directories = new System.Windows.Forms.Button();
+            this.bt_back = new System.Windows.Forms.Button();
             this.logo = new System.Windows.Forms.PictureBox();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.speed = new MaterialSkin.Controls.MaterialLabel();
-            this.percentage = new MaterialSkin.Controls.MaterialLabel();
+            this.lv_files = new MaterialSkin.Controls.MaterialListView();
+            this.list_filename = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.list_filetype = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.list_filesize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lb_speed = new MaterialSkin.Controls.MaterialLabel();
+            this.lb_percentage = new MaterialSkin.Controls.MaterialLabel();
+            this.list_fileicon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
-            // path
+            // tb_path
             // 
-            this.path.Depth = 0;
-            this.path.Hint = "";
-            this.path.Location = new System.Drawing.Point(190, 81);
-            this.path.MaxLength = 32767;
-            this.path.MouseState = MaterialSkin.MouseState.HOVER;
-            this.path.Name = "path";
-            this.path.PasswordChar = '\0';
-            this.path.SelectedText = "";
-            this.path.SelectionLength = 0;
-            this.path.SelectionStart = 0;
-            this.path.Size = new System.Drawing.Size(600, 23);
-            this.path.TabIndex = 1;
-            this.path.TabStop = false;
-            this.path.Text = "\\";
-            this.path.UseSystemPasswordChar = false;
+            this.tb_path.Depth = 0;
+            this.tb_path.Hint = "";
+            this.tb_path.Location = new System.Drawing.Point(190, 81);
+            this.tb_path.MaxLength = 32767;
+            this.tb_path.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tb_path.Name = "tb_path";
+            this.tb_path.PasswordChar = '\0';
+            this.tb_path.SelectedText = "";
+            this.tb_path.SelectionLength = 0;
+            this.tb_path.SelectionStart = 0;
+            this.tb_path.Size = new System.Drawing.Size(600, 23);
+            this.tb_path.TabIndex = 1;
+            this.tb_path.TabStop = false;
+            this.tb_path.Text = "\\";
+            this.tb_path.UseSystemPasswordChar = false;
             // 
-            // home
+            // bt_home
             // 
-            this.home.BackColor = System.Drawing.Color.Transparent;
-            this.home.FlatAppearance.BorderSize = 0;
-            this.home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.home.Image = global::FtpClient.Properties.Resources.home;
-            this.home.Location = new System.Drawing.Point(138, 64);
-            this.home.Name = "home";
-            this.home.Size = new System.Drawing.Size(40, 40);
-            this.home.TabIndex = 0;
-            this.home.TabStop = false;
-            this.home.UseVisualStyleBackColor = false;
+            this.bt_home.BackColor = System.Drawing.Color.Transparent;
+            this.bt_home.FlatAppearance.BorderSize = 0;
+            this.bt_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_home.Image = global::FtpClient.Properties.Resources.home;
+            this.bt_home.Location = new System.Drawing.Point(138, 64);
+            this.bt_home.Name = "bt_home";
+            this.bt_home.Size = new System.Drawing.Size(40, 40);
+            this.bt_home.TabIndex = 0;
+            this.bt_home.TabStop = false;
+            this.bt_home.UseVisualStyleBackColor = false;
             // 
-            // refresh
+            // bt_refresh
             // 
-            this.refresh.BackColor = System.Drawing.Color.Transparent;
-            this.refresh.FlatAppearance.BorderSize = 0;
-            this.refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refresh.Image = global::FtpClient.Properties.Resources.refresh;
-            this.refresh.Location = new System.Drawing.Point(92, 64);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(40, 40);
-            this.refresh.TabIndex = 0;
-            this.refresh.TabStop = false;
-            this.refresh.UseVisualStyleBackColor = false;
+            this.bt_refresh.BackColor = System.Drawing.Color.Transparent;
+            this.bt_refresh.FlatAppearance.BorderSize = 0;
+            this.bt_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_refresh.Image = global::FtpClient.Properties.Resources.refresh;
+            this.bt_refresh.Location = new System.Drawing.Point(92, 64);
+            this.bt_refresh.Name = "bt_refresh";
+            this.bt_refresh.Size = new System.Drawing.Size(40, 40);
+            this.bt_refresh.TabIndex = 0;
+            this.bt_refresh.TabStop = false;
+            this.bt_refresh.UseVisualStyleBackColor = false;
             // 
-            // forward
+            // bt_forward
             // 
-            this.forward.BackColor = System.Drawing.Color.Transparent;
-            this.forward.FlatAppearance.BorderSize = 0;
-            this.forward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.forward.Image = global::FtpClient.Properties.Resources.forward;
-            this.forward.Location = new System.Drawing.Point(46, 64);
-            this.forward.Name = "forward";
-            this.forward.Size = new System.Drawing.Size(40, 40);
-            this.forward.TabIndex = 0;
-            this.forward.TabStop = false;
-            this.forward.UseVisualStyleBackColor = false;
+            this.bt_forward.BackColor = System.Drawing.Color.Transparent;
+            this.bt_forward.FlatAppearance.BorderSize = 0;
+            this.bt_forward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_forward.Image = global::FtpClient.Properties.Resources.forward;
+            this.bt_forward.Location = new System.Drawing.Point(46, 64);
+            this.bt_forward.Name = "bt_forward";
+            this.bt_forward.Size = new System.Drawing.Size(40, 40);
+            this.bt_forward.TabIndex = 0;
+            this.bt_forward.TabStop = false;
+            this.bt_forward.UseVisualStyleBackColor = false;
             // 
-            // delete
+            // bt_delete
             // 
-            this.delete.BackColor = System.Drawing.Color.Transparent;
-            this.delete.FlatAppearance.BorderSize = 0;
-            this.delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delete.Image = global::FtpClient.Properties.Resources.delete;
-            this.delete.Location = new System.Drawing.Point(638, 24);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(40, 40);
-            this.delete.TabIndex = 0;
-            this.delete.TabStop = false;
-            this.delete.UseVisualStyleBackColor = false;
+            this.bt_delete.BackColor = System.Drawing.Color.Transparent;
+            this.bt_delete.FlatAppearance.BorderSize = 0;
+            this.bt_delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bt_delete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.bt_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_delete.Image = global::FtpClient.Properties.Resources.delete;
+            this.bt_delete.Location = new System.Drawing.Point(638, 24);
+            this.bt_delete.Name = "bt_delete";
+            this.bt_delete.Size = new System.Drawing.Size(40, 40);
+            this.bt_delete.TabIndex = 0;
+            this.bt_delete.TabStop = false;
+            this.bt_delete.UseVisualStyleBackColor = false;
             // 
-            // download
+            // bt_download
             // 
-            this.download.BackColor = System.Drawing.Color.Transparent;
-            this.download.FlatAppearance.BorderSize = 0;
-            this.download.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.download.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.download.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.download.Image = global::FtpClient.Properties.Resources.download;
-            this.download.Location = new System.Drawing.Point(592, 24);
-            this.download.Name = "download";
-            this.download.Size = new System.Drawing.Size(40, 40);
-            this.download.TabIndex = 0;
-            this.download.TabStop = false;
-            this.download.UseVisualStyleBackColor = false;
+            this.bt_download.BackColor = System.Drawing.Color.Transparent;
+            this.bt_download.FlatAppearance.BorderSize = 0;
+            this.bt_download.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bt_download.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.bt_download.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_download.Image = global::FtpClient.Properties.Resources.download;
+            this.bt_download.Location = new System.Drawing.Point(592, 24);
+            this.bt_download.Name = "bt_download";
+            this.bt_download.Size = new System.Drawing.Size(40, 40);
+            this.bt_download.TabIndex = 0;
+            this.bt_download.TabStop = false;
+            this.bt_download.UseVisualStyleBackColor = false;
             // 
-            // upload
+            // bt_upload
             // 
-            this.upload.BackColor = System.Drawing.Color.Transparent;
-            this.upload.FlatAppearance.BorderSize = 0;
-            this.upload.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.upload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.upload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.upload.Image = global::FtpClient.Properties.Resources.upload;
-            this.upload.Location = new System.Drawing.Point(546, 24);
-            this.upload.Name = "upload";
-            this.upload.Size = new System.Drawing.Size(40, 40);
-            this.upload.TabIndex = 0;
-            this.upload.TabStop = false;
-            this.upload.UseVisualStyleBackColor = false;
+            this.bt_upload.BackColor = System.Drawing.Color.Transparent;
+            this.bt_upload.FlatAppearance.BorderSize = 0;
+            this.bt_upload.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bt_upload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.bt_upload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_upload.Image = global::FtpClient.Properties.Resources.upload;
+            this.bt_upload.Location = new System.Drawing.Point(546, 24);
+            this.bt_upload.Name = "bt_upload";
+            this.bt_upload.Size = new System.Drawing.Size(40, 40);
+            this.bt_upload.TabIndex = 0;
+            this.bt_upload.TabStop = false;
+            this.bt_upload.UseVisualStyleBackColor = false;
             // 
-            // create_directories
+            // bt_create_directories
             // 
-            this.create_directories.BackColor = System.Drawing.Color.Transparent;
-            this.create_directories.FlatAppearance.BorderSize = 0;
-            this.create_directories.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.create_directories.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.create_directories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.create_directories.Image = global::FtpClient.Properties.Resources.create_directories;
-            this.create_directories.Location = new System.Drawing.Point(500, 24);
-            this.create_directories.Name = "create_directories";
-            this.create_directories.Size = new System.Drawing.Size(40, 40);
-            this.create_directories.TabIndex = 0;
-            this.create_directories.TabStop = false;
-            this.create_directories.UseVisualStyleBackColor = false;
+            this.bt_create_directories.BackColor = System.Drawing.Color.Transparent;
+            this.bt_create_directories.FlatAppearance.BorderSize = 0;
+            this.bt_create_directories.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bt_create_directories.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.bt_create_directories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_create_directories.Image = global::FtpClient.Properties.Resources.create_directories;
+            this.bt_create_directories.Location = new System.Drawing.Point(500, 24);
+            this.bt_create_directories.Name = "bt_create_directories";
+            this.bt_create_directories.Size = new System.Drawing.Size(40, 40);
+            this.bt_create_directories.TabIndex = 0;
+            this.bt_create_directories.TabStop = false;
+            this.bt_create_directories.UseVisualStyleBackColor = false;
             // 
-            // back
+            // bt_back
             // 
-            this.back.BackColor = System.Drawing.Color.Transparent;
-            this.back.FlatAppearance.BorderSize = 0;
-            this.back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.back.Image = global::FtpClient.Properties.Resources.back;
-            this.back.Location = new System.Drawing.Point(0, 64);
-            this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(40, 40);
-            this.back.TabIndex = 0;
-            this.back.TabStop = false;
-            this.back.UseVisualStyleBackColor = false;
+            this.bt_back.BackColor = System.Drawing.Color.Transparent;
+            this.bt_back.FlatAppearance.BorderSize = 0;
+            this.bt_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_back.Image = global::FtpClient.Properties.Resources.back;
+            this.bt_back.Location = new System.Drawing.Point(0, 64);
+            this.bt_back.Name = "bt_back";
+            this.bt_back.Size = new System.Drawing.Size(40, 40);
+            this.bt_back.TabIndex = 0;
+            this.bt_back.TabStop = false;
+            this.bt_back.UseVisualStyleBackColor = false;
             // 
             // logo
             // 
@@ -206,106 +208,107 @@
             this.logo.TabIndex = 2;
             this.logo.TabStop = false;
             // 
-            // materialListView1
+            // lv_files
             // 
-            this.materialListView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.materialListView1.AllowColumnReorder = true;
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.HideSelection = false;
-            this.materialListView1.HoverSelection = true;
-            this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.lv_files.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.lv_files.AllowColumnReorder = true;
+            this.lv_files.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lv_files.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.list_fileicon,
+            this.list_filename,
+            this.list_filetype,
+            this.list_filesize});
+            this.lv_files.Depth = 0;
+            this.lv_files.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lv_files.FullRowSelect = true;
+            this.lv_files.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lv_files.HideSelection = false;
+            this.lv_files.HoverSelection = true;
+            listViewItem1.StateImageIndex = 0;
+            this.lv_files.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2,
             listViewItem3,
             listViewItem4});
-            this.materialListView1.Location = new System.Drawing.Point(30, 122);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(732, 305);
-            this.materialListView1.TabIndex = 3;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.lv_files.Location = new System.Drawing.Point(30, 122);
+            this.lv_files.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.lv_files.MouseState = MaterialSkin.MouseState.OUT;
+            this.lv_files.Name = "lv_files";
+            this.lv_files.OwnerDraw = true;
+            this.lv_files.Size = new System.Drawing.Size(732, 309);
+            this.lv_files.TabIndex = 3;
+            this.lv_files.UseCompatibleStateImageBehavior = false;
+            this.lv_files.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader1
+            // list_filename
             // 
-            this.columnHeader1.Text = "序号";
-            this.columnHeader1.Width = 95;
+            this.list_filename.Text = "文件名";
+            this.list_filename.Width = 313;
             // 
-            // columnHeader2
+            // list_filetype
             // 
-            this.columnHeader2.Text = "文件名";
-            this.columnHeader2.Width = 337;
+            this.list_filetype.Text = "文件类型";
+            this.list_filetype.Width = 148;
             // 
-            // columnHeader3
+            // list_filesize
             // 
-            this.columnHeader3.Text = "文件类型";
-            this.columnHeader3.Width = 148;
+            this.list_filesize.Text = "文件大小";
+            this.list_filesize.Width = 145;
             // 
-            // columnHeader4
+            // lb_speed
             // 
-            this.columnHeader4.Text = "文件大小";
-            this.columnHeader4.Width = 145;
+            this.lb_speed.AutoSize = true;
+            this.lb_speed.Depth = 0;
+            this.lb_speed.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lb_speed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lb_speed.Location = new System.Drawing.Point(20, 470);
+            this.lb_speed.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lb_speed.Name = "lb_speed";
+            this.lb_speed.Size = new System.Drawing.Size(66, 19);
+            this.lb_speed.TabIndex = 4;
+            this.lb_speed.Text = "xxx KB/s";
             // 
-            // speed
+            // lb_percentage
             // 
-            this.speed.AutoSize = true;
-            this.speed.Depth = 0;
-            this.speed.Font = new System.Drawing.Font("Roboto", 11F);
-            this.speed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.speed.Location = new System.Drawing.Point(26, 470);
-            this.speed.MouseState = MaterialSkin.MouseState.HOVER;
-            this.speed.Name = "speed";
-            this.speed.Size = new System.Drawing.Size(66, 19);
-            this.speed.TabIndex = 4;
-            this.speed.Text = "xxx KB/s";
+            this.lb_percentage.AutoSize = true;
+            this.lb_percentage.Depth = 0;
+            this.lb_percentage.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lb_percentage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lb_percentage.Location = new System.Drawing.Point(134, 470);
+            this.lb_percentage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lb_percentage.Name = "lb_percentage";
+            this.lb_percentage.Size = new System.Drawing.Size(91, 19);
+            this.lb_percentage.TabIndex = 6;
+            this.lb_percentage.Text = "a MB / b MB";
             // 
-            // percentage
+            // list_fileicon
             // 
-            this.percentage.AutoSize = true;
-            this.percentage.Depth = 0;
-            this.percentage.Font = new System.Drawing.Font("Roboto", 11F);
-            this.percentage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.percentage.Location = new System.Drawing.Point(589, 469);
-            this.percentage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.percentage.Name = "percentage";
-            this.percentage.Size = new System.Drawing.Size(91, 19);
-            this.percentage.TabIndex = 6;
-            this.percentage.Text = "a MB / b MB";
+            this.list_fileicon.Text = "fileicon";
+            this.list_fileicon.Width = 120;
             // 
-            // main_app
+            // f_main_app
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
-            this.Controls.Add(this.percentage);
-            this.Controls.Add(this.speed);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.lb_percentage);
+            this.Controls.Add(this.lb_speed);
+            this.Controls.Add(this.lv_files);
             this.Controls.Add(this.logo);
-            this.Controls.Add(this.path);
-            this.Controls.Add(this.home);
-            this.Controls.Add(this.refresh);
-            this.Controls.Add(this.forward);
-            this.Controls.Add(this.delete);
-            this.Controls.Add(this.download);
-            this.Controls.Add(this.upload);
-            this.Controls.Add(this.create_directories);
-            this.Controls.Add(this.back);
+            this.Controls.Add(this.tb_path);
+            this.Controls.Add(this.bt_home);
+            this.Controls.Add(this.bt_refresh);
+            this.Controls.Add(this.bt_forward);
+            this.Controls.Add(this.bt_delete);
+            this.Controls.Add(this.bt_download);
+            this.Controls.Add(this.bt_upload);
+            this.Controls.Add(this.bt_create_directories);
+            this.Controls.Add(this.bt_back);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(800, 500);
             this.MinimumSize = new System.Drawing.Size(800, 500);
-            this.Name = "main_app";
+            this.Name = "f_main_app";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FtpClient";
@@ -317,23 +320,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Button back;
-        private System.Windows.Forms.Button forward;
-        private System.Windows.Forms.Button refresh;
-        private System.Windows.Forms.Button home;
-        private MaterialSkin.Controls.MaterialSingleLineTextField path;
-        private System.Windows.Forms.Button create_directories;
-        private System.Windows.Forms.Button upload;
-        private System.Windows.Forms.Button download;
-        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Button bt_back;
+        private System.Windows.Forms.Button bt_forward;
+        private System.Windows.Forms.Button bt_refresh;
+        private System.Windows.Forms.Button bt_home;
+        private MaterialSkin.Controls.MaterialSingleLineTextField tb_path;
+        private System.Windows.Forms.Button bt_create_directories;
+        private System.Windows.Forms.Button bt_upload;
+        private System.Windows.Forms.Button bt_download;
+        private System.Windows.Forms.Button bt_delete;
         private System.Windows.Forms.PictureBox logo;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private MaterialSkin.Controls.MaterialLabel speed;
-        private MaterialSkin.Controls.MaterialLabel percentage;
+        private MaterialSkin.Controls.MaterialListView lv_files;
+        private System.Windows.Forms.ColumnHeader list_filename;
+        private System.Windows.Forms.ColumnHeader list_filetype;
+        private System.Windows.Forms.ColumnHeader list_filesize;
+        private MaterialSkin.Controls.MaterialLabel lb_speed;
+        private MaterialSkin.Controls.MaterialLabel lb_percentage;
+        private System.Windows.Forms.ColumnHeader list_fileicon;
     }
 }
 

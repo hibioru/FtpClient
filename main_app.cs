@@ -12,9 +12,9 @@ using MaterialSkin.Controls;
 
 namespace FtpClient
 {
-    public partial class main_app : MaterialForm
+    public partial class f_main_app : MaterialForm
     {
-        public main_app()
+        public f_main_app()
         {
             InitializeComponent();
 
