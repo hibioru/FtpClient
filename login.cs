@@ -37,8 +37,9 @@ namespace FtpClient
                     string Port = tb_port.Text.Trim();
                     string UserName = tb_username.Text.Trim();
                     string Password = tb_password.Text.Trim();
-                    ftpHelper = new FTPHelper( Address, UserName, Password,Port);
-                
+                    ftpHelper = new FTPHelper(Address, UserName, Password, Port);
+
+
                 }
             }
             catch (Exception ex)
