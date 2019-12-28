@@ -16,17 +16,20 @@ namespace FtpClient
         /// <summary>
         /// Ftp服务器ip
         /// </summary>
-        public static string FtpServerIP = "";
+        public static string Address = "";
         /// <summary>
         /// Ftp 指定用户名
         /// </summary>
-        public static string FtpUserID = "";
+        public static string UserName = "";
         /// <summary>
         /// Ftp 指定用户密码
         /// </summary>
-        public static string FtpPassword = "";
-
-        public static string ftpURI = "ftp://" + FtpServerIP + "/";
+        public static string Password = "";
+        /// <summary>
+        ///ftp指定端口
+        /// </summary>
+        public static string Port = "";
+        public static string ftpURI = "ftp://" + Address + "/";
 
         #endregion
 
@@ -49,11 +52,11 @@ namespace FtpClient
             {
 
                 outputStream = new FileStream(localFileName, FileMode.Create);
-                if (FtpServerIP == null || FtpServerIP.Trim().Length == 0)
+                if (Address== null || Address.Trim().Length == 0)
                 {
                     throw new Exception("ftp下载目标服务器地址未设置！");
                 }
-                Uri uri = new Uri("ftp://" + FtpServerIP + "/" + remoteFileName);
+                Uri uri = new Uri("ftp://" + Address + "/" + remoteFileName);
                 ftpsize = (FtpWebRequest)FtpWebRequest.Create(uri);
                 ftpsize.UseBinary = true;
 
@@ -62,8 +65,8 @@ namespace FtpClient
                 reqFTP.KeepAlive = false;
                 if (ifCredential)//使用用户身份认证
                 {
-                    ftpsize.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
-                    reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                    ftpsize.Credentials = new NetworkCredential(UserName, Password);
+                    reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 }
                 ftpsize.Method = WebRequestMethods.Ftp.GetFileSize;
                 FtpWebResponse re = (FtpWebResponse)ftpsize.GetResponse();
@@ -140,11 +143,11 @@ namespace FtpClient
             {
 
                 outputStream = new FileStream(localFileName, FileMode.Append);
-                if (FtpServerIP == null || FtpServerIP.Trim().Length == 0)
+                if (Address == null || Address.Trim().Length == 0)
                 {
                     throw new Exception("ftp下载目标服务器地址未设置！");
                 }
-                Uri uri = new Uri("ftp://" + FtpServerIP + "/" + remoteFileName);
+                Uri uri = new Uri("ftp://" + Address + "/" + remoteFileName);
                 ftpsize = (FtpWebRequest)FtpWebRequest.Create(uri);
                 ftpsize.UseBinary = true;
                 ftpsize.ContentOffset = size;
@@ -155,8 +158,8 @@ namespace FtpClient
                 reqFTP.ContentOffset = size;
                 if (ifCredential)//使用用户身份认证
                 {
-                    ftpsize.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
-                    reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                    ftpsize.Credentials = new NetworkCredential(UserName, Password);
+                    reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 }
                 ftpsize.Method = WebRequestMethods.Ftp.GetFileSize;
                 FtpWebResponse re = (FtpWebResponse)ftpsize.GetResponse();
@@ -268,15 +271,15 @@ namespace FtpClient
             try
             {
                 FileInfo finfo = new FileInfo(localFullPathName);
-                if (FtpServerIP == null || FtpServerIP.Trim().Length == 0)
+                if (Address == null || Address.Trim().Length == 0)
                 {
                     throw new Exception("ftp上传目标服务器地址未设置！");
                 }
-                Uri uri = new Uri("ftp://" + FtpServerIP + "/" + finfo.Name);
+                Uri uri = new Uri("ftp://" + Address + "/" + finfo.Name);
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(uri);
                 reqFTP.KeepAlive = false;
                 reqFTP.UseBinary = true;
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);//用户，密码
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);//用户，密码
                 reqFTP.Method = WebRequestMethods.Ftp.UploadFile;//向服务器发出下载请求命令
                 reqFTP.ContentLength = finfo.Length;//为request指定上传文件的大小
                 response = reqFTP.GetResponse() as FtpWebResponse;
@@ -374,17 +377,17 @@ namespace FtpClient
             string uri;
             if (remoteFilepath.Length == 0)
             {
-                uri = "ftp://" + FtpServerIP + "/" + newFileName;
+                uri = "ftp://" + Address + "/" + newFileName;
             }
             else
             {
-                uri = "ftp://" + FtpServerIP + "/" + remoteFilepath + "/" + newFileName;
+                uri = "ftp://" + Address + "/" + remoteFilepath + "/" + newFileName;
             }
             FtpWebRequest reqFTP;
             // 根据uri创建FtpWebRequest对象 
             reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
             // ftp用户名和密码 
-            reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+            reqFTP.Credentials = new NetworkCredential(UserName, Password);
             // 默认为true，连接不会被关闭 
             // 在一个命令之后被执行 
             reqFTP.KeepAlive = false;
@@ -481,16 +484,16 @@ namespace FtpClient
                 string uri;
                 if (remoteFilepath.Length == 0)
                 {
-                    uri = "ftp://" + FtpServerIP + "/" + fi.Name;
+                    uri = "ftp://" + Address + "/" + fi.Name;
                 }
                 else
                 {
-                    uri = "ftp://" + FtpServerIP + "/" + remoteFilepath + "/" + fi.Name;
+                    uri = "ftp://" + Address + "/" + remoteFilepath + "/" + fi.Name;
                 }
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(uri);
                 reqFTP.KeepAlive = false;
                 reqFTP.UseBinary = true;
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);//用户，密码
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);//用户，密码
                 reqFTP.Method = WebRequestMethods.Ftp.GetFileSize;
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 filesize = response.ContentLength;
@@ -527,7 +530,7 @@ namespace FtpClient
                 StringBuilder result = new StringBuilder();
                 FtpWebRequest ftp;
                 ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI));
-                ftp.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                ftp.Credentials = new NetworkCredential(UserName, Password);
                 ftp.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
                 WebResponse response = ftp.GetResponse();
                 StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
@@ -564,7 +567,7 @@ namespace FtpClient
             {
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI));
                 reqFTP.UseBinary = true;
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectory;
                 WebResponse response = reqFTP.GetResponse();
                 StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
@@ -646,7 +649,7 @@ namespace FtpClient
                 FtpWebRequest reqFTP;
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
 
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                reqFTP.Credentials = new NetworkCredential(UserName,Password);
                 reqFTP.KeepAlive = false;
                 reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
 
@@ -680,7 +683,7 @@ namespace FtpClient
                 FtpWebRequest reqFTP;
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
 
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 reqFTP.KeepAlive = false;
                 reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
 
@@ -716,7 +719,7 @@ namespace FtpClient
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + filename));
                 reqFTP.Method = WebRequestMethods.Ftp.GetFileSize;
                 reqFTP.UseBinary = true;
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 Stream ftpStream = response.GetResponseStream();
                 fileSize = response.ContentLength;
@@ -787,7 +790,7 @@ namespace FtpClient
                 reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI + dirName));
                 reqFTP.Method = WebRequestMethods.Ftp.MakeDirectory;
                 reqFTP.UseBinary = true;
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 Stream ftpStream = response.GetResponseStream();
 
@@ -814,7 +817,7 @@ namespace FtpClient
                 reqFTP.Method = WebRequestMethods.Ftp.Rename;
                 reqFTP.RenameTo = newFilename;
                 reqFTP.UseBinary = true;
-                reqFTP.Credentials = new NetworkCredential(FtpUserID, FtpPassword);
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
                 Stream ftpStream = response.GetResponseStream();
 
@@ -853,7 +856,7 @@ namespace FtpClient
             {
                 ftpRemotePath += DirectoryName + "/";
             }
-            ftpURI = "ftp://" + FtpServerIP + "/" + ftpRemotePath + "/";
+            ftpURI = "ftp://" + Address + "/" + ftpRemotePath + "/";
         }
         #endregion
 

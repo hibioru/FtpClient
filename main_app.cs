@@ -27,6 +27,10 @@ namespace FtpClient
 
         }
 
+        private void bt_create_directories_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

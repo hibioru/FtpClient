@@ -18,7 +18,11 @@ namespace FtpClient
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new f_login());
-            //Application.Run(new main_app());
+            Application.Run(new f_main_app());
+           
+           
+
+            
 
         }
 
