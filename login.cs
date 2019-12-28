@@ -37,14 +37,15 @@ namespace FtpClient
                     string Port = tb_port.Text.Trim();
                     string UserName = tb_username.Text.Trim();
                     string Password = tb_password.Text.Trim();
-                 //   FTPHelper = new FTPHelper( Address, UserName, Password,Port);
+                    ftpHelper = new FTPHelper( Address, UserName, Password,Port);
                 
                 }
             }
             catch (Exception ex)
             {
             }
-            //f_main_app.ShowDialog;
+            Show();
+
         }
         private bool checktext()//判断有没有输入地址、端口、用户名、密码
         {

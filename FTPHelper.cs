@@ -10,27 +10,34 @@ namespace FtpClient
 {
     public class FTPHelper
     {
+        private FTPHelper ftphelper;
         string ftpRemotePath;
 
-        #region 变量属性
+        #region 变量属性，用户名，密码，端口，IP地址
         /// <summary>
         /// Ftp服务器ip
         /// </summary>
-        public static string Address = "";
+        public static string Address { get; set; }
         /// <summary>
         /// Ftp 指定用户名
         /// </summary>
-        public static string UserName = "";
+        public static string UserName { get; set; }
         /// <summary>
         /// Ftp 指定用户密码
         /// </summary>
-        public static string Password = "";
+        public static string Password { get; set; }
         /// <summary>
         ///ftp指定端口
         /// </summary>
-        public static string Port = "";
+        public static string Port { get; set; }
         public static string ftpURI = "ftp://" + Address + "/";
-
+        public FTPHelper(string address, string port, string userName, string password)
+        {
+            address = Address;
+            port = Port;
+            userName = UserName;
+           password = Password;
+        }
         #endregion
 
         #region 从FTP服务器下载文件，指定本地路径和本地文件名
