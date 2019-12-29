@@ -20,9 +20,9 @@ namespace FtpClient
             Application.Run(new f_login());
             Application.Run(new f_main_app());
            
-           
 
-            
+
+
 
         }
 

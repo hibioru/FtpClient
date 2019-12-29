@@ -45,7 +45,8 @@ namespace FtpClient
             catch (Exception ex)
             {
             }
-            Show();
+            Show();//弹出主界面
+            
 
         }
         private bool checktext()//判断有没有输入地址、端口、用户名、密码
