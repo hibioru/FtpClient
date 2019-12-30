@@ -70,7 +70,7 @@
             this.tb_path.Depth = 0;
             this.tb_path.Hint = "";
             this.tb_path.Location = new System.Drawing.Point(253, 101);
-            this.tb_path.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_path.Margin = new System.Windows.Forms.Padding(4);
             this.tb_path.MaxLength = 32767;
             this.tb_path.MouseState = MaterialSkin.MouseState.HOVER;
             this.tb_path.Name = "tb_path";
@@ -91,7 +91,7 @@
             this.bt_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_home.Image = global::FtpClient.Properties.Resources.home;
             this.bt_home.Location = new System.Drawing.Point(184, 80);
-            this.bt_home.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_home.Margin = new System.Windows.Forms.Padding(4);
             this.bt_home.Name = "bt_home";
             this.bt_home.Size = new System.Drawing.Size(53, 50);
             this.bt_home.TabIndex = 0;
@@ -105,7 +105,7 @@
             this.bt_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_refresh.Image = global::FtpClient.Properties.Resources.refresh;
             this.bt_refresh.Location = new System.Drawing.Point(123, 80);
-            this.bt_refresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_refresh.Margin = new System.Windows.Forms.Padding(4);
             this.bt_refresh.Name = "bt_refresh";
             this.bt_refresh.Size = new System.Drawing.Size(53, 50);
             this.bt_refresh.TabIndex = 0;
@@ -119,7 +119,7 @@
             this.bt_forward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_forward.Image = global::FtpClient.Properties.Resources.forward;
             this.bt_forward.Location = new System.Drawing.Point(61, 80);
-            this.bt_forward.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_forward.Margin = new System.Windows.Forms.Padding(4);
             this.bt_forward.Name = "bt_forward";
             this.bt_forward.Size = new System.Drawing.Size(53, 50);
             this.bt_forward.TabIndex = 0;
@@ -135,12 +135,13 @@
             this.bt_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_delete.Image = global::FtpClient.Properties.Resources.delete;
             this.bt_delete.Location = new System.Drawing.Point(851, 30);
-            this.bt_delete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_delete.Margin = new System.Windows.Forms.Padding(4);
             this.bt_delete.Name = "bt_delete";
             this.bt_delete.Size = new System.Drawing.Size(53, 50);
             this.bt_delete.TabIndex = 0;
             this.bt_delete.TabStop = false;
             this.bt_delete.UseVisualStyleBackColor = false;
+            this.bt_delete.Click += new System.EventHandler(this.bt_delete_Click);
             // 
             // bt_download
             // 
@@ -151,7 +152,7 @@
             this.bt_download.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_download.Image = global::FtpClient.Properties.Resources.download;
             this.bt_download.Location = new System.Drawing.Point(789, 30);
-            this.bt_download.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_download.Margin = new System.Windows.Forms.Padding(4);
             this.bt_download.Name = "bt_download";
             this.bt_download.Size = new System.Drawing.Size(53, 50);
             this.bt_download.TabIndex = 0;
@@ -167,7 +168,7 @@
             this.bt_upload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_upload.Image = global::FtpClient.Properties.Resources.upload;
             this.bt_upload.Location = new System.Drawing.Point(728, 30);
-            this.bt_upload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_upload.Margin = new System.Windows.Forms.Padding(4);
             this.bt_upload.Name = "bt_upload";
             this.bt_upload.Size = new System.Drawing.Size(53, 50);
             this.bt_upload.TabIndex = 0;
@@ -183,7 +184,7 @@
             this.bt_create_directories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_create_directories.Image = global::FtpClient.Properties.Resources.create_directories;
             this.bt_create_directories.Location = new System.Drawing.Point(667, 30);
-            this.bt_create_directories.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_create_directories.Margin = new System.Windows.Forms.Padding(4);
             this.bt_create_directories.Name = "bt_create_directories";
             this.bt_create_directories.Size = new System.Drawing.Size(53, 50);
             this.bt_create_directories.TabIndex = 0;
@@ -198,7 +199,7 @@
             this.bt_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_back.Image = global::FtpClient.Properties.Resources.back;
             this.bt_back.Location = new System.Drawing.Point(0, 80);
-            this.bt_back.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_back.Margin = new System.Windows.Forms.Padding(4);
             this.bt_back.Name = "bt_back";
             this.bt_back.Size = new System.Drawing.Size(53, 50);
             this.bt_back.TabIndex = 0;
@@ -213,7 +214,7 @@
             this.logo.Image = global::FtpClient.Properties.Resources.FtpClient;
             this.logo.InitialImage = global::FtpClient.Properties.Resources.FtpClient;
             this.logo.Location = new System.Drawing.Point(120, 30);
-            this.logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logo.Margin = new System.Windows.Forms.Padding(4);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(53, 50);
             this.logo.TabIndex = 2;
@@ -242,7 +243,7 @@
             listViewItem3,
             listViewItem4});
             this.lv_files.Location = new System.Drawing.Point(40, 152);
-            this.lv_files.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lv_files.Margin = new System.Windows.Forms.Padding(4);
             this.lv_files.MouseLocation = new System.Drawing.Point(-1, -1);
             this.lv_files.MouseState = MaterialSkin.MouseState.OUT;
             this.lv_files.Name = "lv_files";
@@ -319,7 +320,7 @@
             this.Controls.Add(this.bt_create_directories);
             this.Controls.Add(this.bt_back);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1067, 625);
             this.MinimumSize = new System.Drawing.Size(1067, 625);
