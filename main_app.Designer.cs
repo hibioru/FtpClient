@@ -158,6 +158,7 @@
             this.bt_download.TabIndex = 0;
             this.bt_download.TabStop = false;
             this.bt_download.UseVisualStyleBackColor = false;
+            this.bt_download.Click += new System.EventHandler(this.bt_download_Click);
             // 
             // bt_upload
             // 

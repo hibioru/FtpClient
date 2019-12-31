@@ -9,13 +9,16 @@ using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.IO;
-
+using System.Net;
 
 namespace FtpClient
 {
     public partial class f_main_app : MaterialForm
     {
-        
+        public string remoteFileName { get;  set; }
+        public object updateProgress { get;  set; }
+        private Address ipaddress;
+
         public f_main_app()
         {
             InitializeComponent();
@@ -60,8 +63,8 @@ namespace FtpClient
 
 
         ///summary
-       ///删除文件夹
-       ///summary
+        ///删除文件夹
+        ///summary
         private void bt_delete_Click(object sender, EventArgs e)
         {
             string path = tb_path.Text;
@@ -76,15 +79,42 @@ namespace FtpClient
             }
         }
 
+        private void bt_download_Click(object sender, EventArgs e)
+        {
+
+            IPAddress ipaddress = new Address();
+            OpenFileDialog openFileDialogTemp = new OpenFileDialog();
+            DialogResult dr = openFileDialogTemp.ShowDialog();
+            object p = "ftp://" + ipaddress + "/";
+            string address = p + "remoteFileName";
+            string fileNamePath;
+            string saveName;
+            if (dr == DialogResult.OK)
+            {
+                saveName = openFileDialogTemp.SafeFileName;
+                fileNamePath = openFileDialogTemp.FileName;
+                Upload_Request2(address, fileNamePath, saveName, updateProgress);
+
+
+            }
+        }
+
+        private void Upload_Request2(string address, string fileNamePath, string saveName, object updateProgress)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        #endregion
+
+
+
 
 
     }
-    #endregion
 
-
-
-
-
+ 
 }
 
 
