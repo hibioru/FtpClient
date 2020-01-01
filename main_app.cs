@@ -15,14 +15,15 @@ namespace FtpClient
 {
     public partial class f_main_app : MaterialForm
     {
-        public string remoteFileName { get;  set; }
-        public object updateProgress { get;  set; }
-        private Address ipaddress;
+        //public string remoteFileName { get;  set; }
+        //public object updateProgress { get;  set; }
+        //private Address ipaddress;
 
         public f_main_app()
         {
             InitializeComponent();
-            //主界面皮肤设置
+
+            //加载自定义皮肤
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -30,6 +31,46 @@ namespace FtpClient
 
         }
 
+
+        private void f_main_app_Load(object sender, EventArgs e)
+        {
+
+            lv_files_load();
+
+        }
+
+        private static string filename;
+
+        private void lv_files_load()
+        {
+            tb_path.Text = FTPHelper.ftpRemotePath;
+
+            //在listview中加载目录
+            lv_files.View = View.Details;
+
+            lv_files.Columns.Clear();
+
+            lv_files.Columns.Add("No.");
+            lv_files.Columns.Add("文件名");
+            lv_files.Columns.Add("文件类型");
+            lv_files.Columns[0].Width = 30;
+            lv_files.Columns[1].Width = 400;
+            lv_files.Columns[2].Width = 100;
+
+            lv_files.Items.Clear();
+
+            String[] files = FTPHelper.GetFilesDetailList();
+            ListViewItem item = null;
+            int id = 1;
+            foreach (String file in files)
+            {
+                item = new ListViewItem(id.ToString());
+                item.SubItems.Add(Path.GetFileName(file));
+                item.SubItems.Add(Path.GetExtension(file));
+                lv_files.Items.Add(item);
+                id++;
+            }
+        }
 
 
         #region  工具栏功能
@@ -40,25 +81,19 @@ namespace FtpClient
         /// <param name="e"></param>
         private void bt_create_directories_Click(object sender, EventArgs e)
         {
-            string path = tb_path.Text;
-            checkpath();
-            if (!Directory.Exists(path))      //判断它是否在文件夹内
+
+            FTPHelper ftphelper = new FTPHelper();
+
+            if (ftphelper.DirectoryExist("新建文件夹") == false)
             {
-                Directory.CreateDirectory(path);      //若无则新建一个文件夹
+                ftphelper.MakeDir("新建文件夹");
+                lv_files_load();
             }
             else
             {
                 MessageBox.Show("该文件已存在！");
             }
-            return;
-        }
 
-        private void checkpath()    //检查是否输入了文件路径
-        {
-            if (tb_path.Text == "/")
-            {
-                MessageBox.Show("请输入文件路径");
-            }
         }
 
 
@@ -67,54 +102,46 @@ namespace FtpClient
         ///summary
         private void bt_delete_Click(object sender, EventArgs e)
         {
-            string path = tb_path.Text;
-            checkpath();
-            if (Directory.Exists(path))
-            {
-                Directory.Delete(path);
-            }
-            else
-            {
-                MessageBox.Show("此文件不存在，无法删除！");
-            }
+
+            FTPHelper.RemoveDirectory("新建文件夹");
+            lv_files_load();
         }
 
+
+        ///summary
+        ///下载文件
+        ///summary
         private void bt_download_Click(object sender, EventArgs e)
         {
 
-            IPAddress ipaddress = new Address();
-            OpenFileDialog openFileDialogTemp = new OpenFileDialog();
-            DialogResult dr = openFileDialogTemp.ShowDialog();
-            object p = "ftp://" + ipaddress + "/";
-            string address = p + "remoteFileName";
-            string fileNamePath;
-            string saveName;
-            if (dr == DialogResult.OK)
+            ListView.SelectedIndexCollection indexes = this.lv_files.SelectedIndices;
+            if (indexes.Count > 0)
             {
-                saveName = openFileDialogTemp.SafeFileName;
-                fileNamePath = openFileDialogTemp.FileName;
-                Upload_Request2(address, fileNamePath, saveName, updateProgress);
-
-
+                int index = indexes[0];
+                filename = this.lv_files.Items[index].SubItems[1].Text;//获取第二列的值
             }
-        }
 
-        private void Upload_Request2(string address, string fileNamePath, string saveName, object updateProgress)
-        {
-            throw new NotImplementedException();
+            FTPHelper.FtpDownload(tb_path.Text + "/" + filename, @"C:\Users\Public\Downloads\" + filename, true);
         }
-
-       
 
         #endregion
 
 
+        private void lv_files_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
 
+        private void tb_path_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FTPHelper ftphelper = new FTPHelper();
+                ftphelper.GotoDirectory(tb_path.Text.ToString(), true); 
+                lv_files_load();
+            }
 
-
+        }
     }
 
- 
 }
-
-
