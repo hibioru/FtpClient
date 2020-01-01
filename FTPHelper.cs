@@ -33,6 +33,7 @@ namespace FtpClient
         ///ftp远程相对路径
         /// </summary>
         public static string ftpRemotePath = "/";
+        public static string LastftpRemotePath;//上一次的ftp远程相对路径
         /// <summary>
         ///ftp远程绝对路径
         /// </summary>
@@ -857,24 +858,29 @@ namespace FtpClient
         public void GotoDirectory(string DirectoryName, bool IsRoot)
         {
 
+            LastftpRemotePath = ftpRemotePath;
+
             if (IsRoot)
             {
-                ftpRemotePath = DirectoryName;
-                ftpURI = "ftp://" + Address + ftpRemotePath + "/";
-            }
-            else
-            {
-                if (DirectoryName == "" || DirectoryName == "/") 
+                if (DirectoryName == "")
                 {
                     ftpRemotePath = "/";
                     ftpURI = "ftp://" + Address + "/";
                 }
                 else
                 {
-                    ftpRemotePath = ftpRemotePath + "/" + DirectoryName ;
-                    ftpURI = "ftp://" + Address  + ftpRemotePath;
+                    ftpRemotePath = DirectoryName;
+                    ftpURI = "ftp://" + Address + ftpRemotePath + "/";
                 }
-                
+            }
+            else
+            {
+                if (ftpRemotePath == "/")
+                {
+                    ftpRemotePath = "";
+                }
+                ftpRemotePath = ftpRemotePath + "/" + DirectoryName;
+                ftpURI = "ftp://" + Address + ftpRemotePath + "/";
             }
             
         }

@@ -51,6 +51,7 @@
             this.tb_address.Size = new System.Drawing.Size(125, 23);
             this.tb_address.TabIndex = 1;
             this.tb_address.TabStop = false;
+            this.tb_address.Text = "ftp.hibioru.com";
             this.tb_address.UseSystemPasswordChar = false;
             // 
             // tb_port
@@ -68,6 +69,7 @@
             this.tb_port.Size = new System.Drawing.Size(50, 23);
             this.tb_port.TabIndex = 2;
             this.tb_port.TabStop = false;
+            this.tb_port.Text = "21";
             this.tb_port.UseSystemPasswordChar = false;
             // 
             // tb_username
@@ -85,6 +87,7 @@
             this.tb_username.Size = new System.Drawing.Size(200, 23);
             this.tb_username.TabIndex = 3;
             this.tb_username.TabStop = false;
+            this.tb_username.Text = "test";
             this.tb_username.UseSystemPasswordChar = false;
             // 
             // tb_password
@@ -102,6 +105,7 @@
             this.tb_password.Size = new System.Drawing.Size(200, 23);
             this.tb_password.TabIndex = 4;
             this.tb_password.TabStop = false;
+            this.tb_password.Text = "hello2020";
             this.tb_password.UseSystemPasswordChar = true;
             // 
             // bt_login

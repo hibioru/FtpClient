@@ -40,6 +40,7 @@ namespace FtpClient
         }
 
         private static string filename;
+        private static string filetype;
 
         private void lv_files_load()
         {
@@ -102,8 +103,23 @@ namespace FtpClient
         ///summary
         private void bt_delete_Click(object sender, EventArgs e)
         {
+            ListView.SelectedIndexCollection indexes = this.lv_files.SelectedIndices;
+            if (indexes.Count > 0)
+            {
+                int index = indexes[0];
+                filename = this.lv_files.Items[index].SubItems[1].Text;//获取第二列的值（获取所选项的名称）
+                filetype = this.lv_files.Items[index].SubItems[2].Text;//获取第三列的值（获取所选项的类型）
+            }
 
-            FTPHelper.RemoveDirectory("新建文件夹");
+            if (filetype == "")
+            {
+                FTPHelper.RemoveDirectory(tb_path.Text + "/" + filename);
+            }
+            else
+            {
+                FTPHelper.Delete(filename);
+            }
+            
             lv_files_load();
         }
 
@@ -118,7 +134,7 @@ namespace FtpClient
             if (indexes.Count > 0)
             {
                 int index = indexes[0];
-                filename = this.lv_files.Items[index].SubItems[1].Text;//获取第二列的值
+                filename = this.lv_files.Items[index].SubItems[1].Text;//获取第二列的值（获取文件名）
             }
 
             FTPHelper.FtpDownload(tb_path.Text + "/" + filename, @"C:\Users\Public\Downloads\" + filename, true);
@@ -127,10 +143,43 @@ namespace FtpClient
         #endregion
 
 
-        private void lv_files_SelectedIndexChanged(object sender, EventArgs e)
+        #region  导航栏功能
+
+        private void bt_forward_Click(object sender, EventArgs e)
         {
-            
+            ListView.SelectedIndexCollection indexes = this.lv_files.SelectedIndices;
+            if (indexes.Count > 0)
+            {
+                int index = indexes[0];
+                filename = this.lv_files.Items[index].SubItems[1].Text;//获取第二列的值（获取文件名）
+            }
+
+            FTPHelper ftphelper = new FTPHelper();
+            ftphelper.GotoDirectory(filename.ToString(), false);
+            lv_files_load();
         }
+
+        private void bt_back_Click(object sender, EventArgs e)
+        {
+            FTPHelper ftphelper = new FTPHelper();
+            ftphelper.GotoDirectory(FTPHelper.LastftpRemotePath.ToString(), true);
+            lv_files_load();
+        }
+
+        private void bt_refresh_Click(object sender, EventArgs e)
+        {
+            lv_files_load();
+        }
+
+        private void bt_home_Click(object sender, EventArgs e)
+        {
+            FTPHelper ftphelper = new FTPHelper();
+            ftphelper.GotoDirectory("/", true);
+            lv_files_load();
+        }
+
+        #endregion
+
 
         private void tb_path_KeyDown(object sender, KeyEventArgs e)
         {
@@ -142,6 +191,8 @@ namespace FtpClient
             }
 
         }
+
+     
     }
 
 }

@@ -78,6 +78,7 @@
             this.bt_home.TabIndex = 0;
             this.bt_home.TabStop = false;
             this.bt_home.UseVisualStyleBackColor = false;
+            this.bt_home.Click += new System.EventHandler(this.bt_home_Click);
             // 
             // bt_refresh
             // 
@@ -91,6 +92,7 @@
             this.bt_refresh.TabIndex = 0;
             this.bt_refresh.TabStop = false;
             this.bt_refresh.UseVisualStyleBackColor = false;
+            this.bt_refresh.Click += new System.EventHandler(this.bt_refresh_Click);
             // 
             // bt_forward
             // 
@@ -104,6 +106,7 @@
             this.bt_forward.TabIndex = 0;
             this.bt_forward.TabStop = false;
             this.bt_forward.UseVisualStyleBackColor = false;
+            this.bt_forward.Click += new System.EventHandler(this.bt_forward_Click);
             // 
             // bt_delete
             // 
@@ -180,6 +183,7 @@
             this.bt_back.TabIndex = 0;
             this.bt_back.TabStop = false;
             this.bt_back.UseVisualStyleBackColor = false;
+            this.bt_back.Click += new System.EventHandler(this.bt_back_Click);
             // 
             // logo
             // 
