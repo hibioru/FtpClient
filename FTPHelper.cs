@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,9 +10,9 @@ namespace FtpClient
 {
     public partial class FTPHelper
     {
-        private FTPHelper ftpHelper;
-        string ftpRemotePath;
-        #region 变量属性，用户名，密码，端口，IP地址
+        
+        
+        #region 变量属性 - 用户名，密码，端口，IP地址
         /// <summary>
         /// Ftp服务器地址
         /// </summary>
@@ -30,7 +29,6 @@ namespace FtpClient
         ///ftp指定端口
         /// </summary>
         public static string Port { get; set; }
-<<<<<<< HEAD
         /// <summary>
         ///ftp远程相对路径
         /// </summary>
@@ -39,18 +37,9 @@ namespace FtpClient
         /// <summary>
         ///ftp远程绝对路径
         /// </summary>
-=======
-        
->>>>>>> parent of 94c49ac... 【重大进展!】完成了访问文件列表和下载文件的方法的调用
         public static string ftpURI = "ftp://" + Address + "/";
-        
-        public FTPHelper(string address, string port, string username, string password)
-        {
-            address = Address;
-            port = Port;
-            username = UserName;
-            password = Password;
-        }
+
+
         #endregion
 
         #region 从FTP服务器下载文件，指定本地路径和本地文件名
@@ -76,7 +65,7 @@ namespace FtpClient
                 {
                     throw new Exception("ftp下载目标服务器地址未设置！");
                 }
-                Uri uri = new Uri("ftp://" + Address + "/" + remoteFileName);
+                Uri uri = new Uri("ftp://" + Address  + remoteFileName);
                 ftpsize = (FtpWebRequest)FtpWebRequest.Create(uri);
                 ftpsize.UseBinary = true;
 
@@ -551,9 +540,9 @@ namespace FtpClient
                 FtpWebRequest ftp;
                 ftp = (FtpWebRequest)FtpWebRequest.Create(new Uri(ftpURI));
                 ftp.Credentials = new NetworkCredential(UserName, Password);
-                ftp.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                ftp.Method = WebRequestMethods.Ftp.ListDirectory;
                 WebResponse response = ftp.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
+                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);//设定文件流读取的编码
                 string line = reader.ReadLine();
 
                 while (line != null)
@@ -590,7 +579,7 @@ namespace FtpClient
                 reqFTP.Credentials = new NetworkCredential(UserName, Password);
                 reqFTP.Method = WebRequestMethods.Ftp.ListDirectory;
                 WebResponse response = reqFTP.GetResponse();
-                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default);
+                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
 
                 string line = reader.ReadLine();
                 while (line != null)
@@ -656,6 +645,73 @@ namespace FtpClient
         }
         #endregion
 
+        #region 删除文件及文件夹
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static bool Delete(string fileName)
+        {
+            try
+            {
+                string uri = ftpURI + fileName;
+                FtpWebRequest reqFTP;
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
+
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
+                reqFTP.KeepAlive = false;
+                reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
+
+                string result = String.Empty;
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                long size = response.ContentLength;
+                Stream datastream = response.GetResponseStream();
+                StreamReader sr = new StreamReader(datastream);
+                result = sr.ReadToEnd();
+                sr.Close();
+                datastream.Close();
+                response.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 删除文件夹
+        /// </summary>
+        /// <param name="folderName"></param>
+        public static void RemoveDirectory(string folderName)
+        {
+            try
+            {
+                string uri = "ftp://" + Address + "/" + folderName;
+                FtpWebRequest reqFTP;
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
+
+                reqFTP.Credentials = new NetworkCredential(UserName, Password);
+                reqFTP.KeepAlive = false;
+                reqFTP.Method = WebRequestMethods.Ftp.RemoveDirectory;
+
+                string result = String.Empty;
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                long size = response.ContentLength;
+                Stream datastream = response.GetResponseStream();
+                StreamReader sr = new StreamReader(datastream);
+                result = sr.ReadToEnd();
+                sr.Close();
+                datastream.Close();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        #endregion
 
 
         #region 其他操作
@@ -806,7 +862,6 @@ namespace FtpClient
 
             if (IsRoot)
             {
-<<<<<<< HEAD
                 if (DirectoryName == "")
                 {
                     ftpRemotePath = "/";
@@ -826,15 +881,8 @@ namespace FtpClient
                 }
                 ftpRemotePath = ftpRemotePath + "/" + DirectoryName;
                 ftpURI = "ftp://" + Address + ftpRemotePath + "/";
-=======
-                ftpRemotePath = DirectoryName;
             }
-            else
-            {
-                ftpRemotePath += DirectoryName + "/";
->>>>>>> parent of 94c49ac... 【重大进展!】完成了访问文件列表和下载文件的方法的调用
-            }
-            ftpURI = "ftp://" + Address + "/" + ftpRemotePath + "/";
+            
         }
         #endregion
 
