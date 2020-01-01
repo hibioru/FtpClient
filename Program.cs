@@ -17,21 +17,12 @@ namespace FtpClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new f_login());
+            Application.Run(new f_main_app());
+           
 
 
-            f_login f_login = new f_login();
-            f_login.ShowDialog();
 
-            if (f_login.DialogResult == DialogResult.OK)
-            {
-                f_login.Dispose();
-                Application.Run(new f_main_app());
-            }
-            else if (f_login.DialogResult == DialogResult.Cancel)
-            {
-                f_login.Dispose();
-                return;
-            }
 
         }
 

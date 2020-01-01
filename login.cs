@@ -14,12 +14,11 @@ namespace FtpClient
 {
     public partial class f_login : MaterialForm
     {
-        //private FTPHelper ftpHelper;
+        private FTPHelper ftpHelper;
         public f_login()
         {
             InitializeComponent();
 
-            //加载自定义皮肤
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -30,30 +29,23 @@ namespace FtpClient
         //点击 Log in 后触发的事件
         private void login_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 if (checktext())
                 {
-                    
-                    FTPHelper.Address = tb_address.Text.Trim();
-                    FTPHelper.Port = tb_port.Text.Trim();
-                    FTPHelper.UserName = tb_username.Text.Trim();
-                    FTPHelper.Password = tb_password.Text.Trim();
-                    FTPHelper.ftpURI = "ftp://" + FTPHelper.Address + "/";
+                    string Address = tb_address.Text.Trim();
+                    string Port = tb_port.Text.Trim();
+                    string UserName = tb_username.Text.Trim();
+                    string Password = tb_password.Text.Trim();
+                    ftpHelper = new FTPHelper(Address, UserName, Password, Port);
 
-                    DialogResult = DialogResult.OK;
-                    Dispose();
-                    Close();
 
                 }
             }
             catch (Exception ex)
             {
-                Show();//弹出主界面
             }
-            
+            Show();//弹出主界面
             
 
         }

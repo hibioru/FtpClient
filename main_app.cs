@@ -15,15 +15,14 @@ namespace FtpClient
 {
     public partial class f_main_app : MaterialForm
     {
-        //public string remoteFileName { get;  set; }
-        //public object updateProgress { get;  set; }
-        //private Address ipaddress;
+        public string remoteFileName { get;  set; }
+        public object updateProgress { get;  set; }
+        private Address ipaddress;
 
         public f_main_app()
         {
             InitializeComponent();
-
-            //加载自定义皮肤
+            //主界面皮肤设置
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
@@ -32,6 +31,7 @@ namespace FtpClient
         }
 
 
+<<<<<<< HEAD
         private void f_main_app_Load(object sender, EventArgs e)
         {
 
@@ -73,6 +73,8 @@ namespace FtpClient
             }
         }
 
+=======
+>>>>>>> parent of 94c49ac... 【重大进展!】完成了访问文件列表和下载文件的方法的调用
 
         #region  工具栏功能
         /// <summary>
@@ -82,19 +84,25 @@ namespace FtpClient
         /// <param name="e"></param>
         private void bt_create_directories_Click(object sender, EventArgs e)
         {
-
-            FTPHelper ftphelper = new FTPHelper();
-
-            if (ftphelper.DirectoryExist("新建文件夹") == false)
+            string path = tb_path.Text;
+            checkpath();
+            if (!Directory.Exists(path))      //判断它是否在文件夹内
             {
-                ftphelper.MakeDir("新建文件夹");
-                lv_files_load();
+                Directory.CreateDirectory(path);      //若无则新建一个文件夹
             }
             else
             {
                 MessageBox.Show("该文件已存在！");
             }
+            return;
+        }
 
+        private void checkpath()    //检查是否输入了文件路径
+        {
+            if (tb_path.Text == "/")
+            {
+                MessageBox.Show("请输入文件路径");
+            }
         }
 
 
@@ -103,6 +111,7 @@ namespace FtpClient
         ///summary
         private void bt_delete_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             ListView.SelectedIndexCollection indexes = this.lv_files.SelectedIndices;
             if (indexes.Count > 0)
             {
@@ -121,28 +130,56 @@ namespace FtpClient
             }
             
             lv_files_load();
+=======
+            string path = tb_path.Text;
+            checkpath();
+            if (Directory.Exists(path))
+            {
+                Directory.Delete(path);
+            }
+            else
+            {
+                MessageBox.Show("此文件不存在，无法删除！");
+            }
+>>>>>>> parent of 94c49ac... 【重大进展!】完成了访问文件列表和下载文件的方法的调用
         }
 
-
-        ///summary
-        ///下载文件
-        ///summary
         private void bt_download_Click(object sender, EventArgs e)
         {
 
-            ListView.SelectedIndexCollection indexes = this.lv_files.SelectedIndices;
-            if (indexes.Count > 0)
+            IPAddress ipaddress = new Address();
+            OpenFileDialog openFileDialogTemp = new OpenFileDialog();
+            DialogResult dr = openFileDialogTemp.ShowDialog();
+            object p = "ftp://" + ipaddress + "/";
+            string address = p + "remoteFileName";
+            string fileNamePath;
+            string saveName;
+            if (dr == DialogResult.OK)
             {
+<<<<<<< HEAD
                 int index = indexes[0];
                 filename = this.lv_files.Items[index].SubItems[1].Text;//获取第二列的值（获取文件名）
-            }
+=======
+                saveName = openFileDialogTemp.SafeFileName;
+                fileNamePath = openFileDialogTemp.FileName;
+                Upload_Request2(address, fileNamePath, saveName, updateProgress);
 
-            FTPHelper.FtpDownload(tb_path.Text + "/" + filename, @"C:\Users\Public\Downloads\" + filename, true);
+
+>>>>>>> parent of 94c49ac... 【重大进展!】完成了访问文件列表和下载文件的方法的调用
+            }
         }
+
+        private void Upload_Request2(string address, string fileNamePath, string saveName, object updateProgress)
+        {
+            throw new NotImplementedException();
+        }
+
+       
 
         #endregion
 
 
+<<<<<<< HEAD
         #region  导航栏功能
 
         private void bt_forward_Click(object sender, EventArgs e)
@@ -193,6 +230,14 @@ namespace FtpClient
         }
 
      
+=======
+
+
+
+>>>>>>> parent of 94c49ac... 【重大进展!】完成了访问文件列表和下载文件的方法的调用
     }
 
+ 
 }
+
+
